@@ -37,8 +37,32 @@ class Board_model extends CI_Model {
         return $this->db->query('SELECT email FROM insert_mem WHERE email="'.$mail.'"')->result();
     }
 
-    public function WordsList(){
-        return $this->db->query('SELECT * FROM board')->result();
+    public function WordsList($table = 'board', $type = '', $offset = '', $limit = ''){
+        //echo "111";
+        //return;
+        //return $this->db->query('SELECT * FROM board')->result();
+        //echo $table;
+        //echo $type = '', $offset = '', $limit = '';
+        //return;
+        $limit_query = '';
+ 
+        if ($limit != '' OR $offset != '') {
+            // 페이징이 있을 경우 처리
+            $limit_query = ' LIMIT ' . $offset . ', ' . $limit;
+        }
+ 
+        $sql = "SELECT * FROM board ORDER BY seq DESC " . $limit_query;
+        $query = $this -> db -> query($sql);
+ 
+        if ($type == 'count') {
+            $result = $query -> num_rows();
+        } else {
+            $result = $query -> result();
+        }
+ 
+        return $result;
+    
+    
     }
 
 }

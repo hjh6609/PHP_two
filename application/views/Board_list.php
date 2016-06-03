@@ -55,33 +55,39 @@
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1>Notice</h1>
+        <h1 align="center">nanaNana</h1>
       </div>
-      <table border="1" style="width:500px; height:70px;">
-        <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>작성자</td>
-            <td>작성일</td>
-            <td>조회</td>
-        </tr>
+      <table border="1" style="width:500px; height:70px;" align="center">
+        <thead>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+                <td>조회</td>
+            </tr>
+        </thead>
         <?php
-             foreach($List as $entry){
+             foreach($list as $entry){
          ?>
-        <tr>
-            <td><?=$entry->seq?></td>
-            <td><a href="#"><?=$entry->title?></a></td>
-            <td><?=$entry->name?></td>
-            <td><?=$entry->sdate?></td>
-            <td><?=$entry->cnt?></td>
-        </tr>
-        <?
+        <tbody>
+            <tr>
+                <td><?php echo $entry->seq;?></td>
+                <td><a href="#"><?php echo $entry->title;?></a></td>
+                <td><?php echo $entry->name;?></td>
+                <td><?php echo $entry->name;?></td>
+                <td><?php echo $entry->cnt;?></td>
+            </tr>
+        </tbody>
+        <?php
             }
         ?>
+        <tfoot align="center">
+            <tr>
+                <th colspan="5"><?php echo $pagination;?></th>
+            </tr>
+        </tfoot>
       </table>
-       
-
-    
 
     </div>
 
